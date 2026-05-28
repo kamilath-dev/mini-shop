@@ -99,40 +99,43 @@ watch(() => props.product.id, () => {
             </div>
           </div>
 
-          <div class="pt-2 flex flex-col sm:flex-row gap-4 items-center">
+          <!-- Section Prix et Actions (Bas) -->
+          <div class="pt-3 mt-auto flex items-center justify-between border-t border-slate-50">
            
-            <div class="sm:text-left text-center shrink-0">
-              <span class="text-[10px] text-slate-400 font-sans block">Prix</span>
-              <span class="font-mono font-black text-xl md:text-2xl text-slate-800">
-                {{ product.price.toFixed(2) }} FCFA
+            <div class="flex flex-col">
+              <span class="text-[10px] text-slate-400 font-sans font-bold uppercase tracking-tight">Prix</span>
+              <span class="font-mono font-black text-lg text-slate-800">
+                {{ product.price.toLocaleString() }} <span class="text-[10px] font-sans">FCFA</span>
               </span>
             </div>
 
-            <div class="flex gap-3 w-full">
+            <div class="flex gap-2">
               
+              <!-- Bouton Ajouter au Panier (Icone) -->
               <button
-                id="add-to-cart-big-btn"
+                id="add-to-cart-btn"
                 :disabled="product.stock === 0"
-                @click="emit('add-to-cart')"
+                @click.stop="emit('add-to-cart')"
                 :class="[
-                  'flex-1 py-2.5 px-4 rounded-xl font-sans font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all duration-200',
+                  'p-2.5 rounded-xl border transition-all duration-200 active:scale-95',
                   product.stock === 0
-                    ? 'bg-slate-150 border border-slate-200 text-slate-400 cursor-not-allowed'
-                    : 'bg-indigo-600 hover:bg-indigo-700 text-white hover:shadow-indigo-100 active:scale-98'
+                    ? 'bg-slate-50 border-slate-100 text-slate-300 cursor-not-allowed'
+                    : 'border-indigo-100 bg-indigo-50 text-indigo-600 hover:bg-indigo-600 hover:text-white shadow-xs'
                 ]"
+                :title="product.stock === 0 ? 'Indisponible' : 'Ajouter au panier'"
               >
-                <ShoppingCart class="w-4 h-4" />
-                <span>{{ product.stock === 0 ? 'Rupture' : 'Ajouter' }}</span>
+                <ShoppingCart class="w-5 h-5" />
               </button>
 
+              <!-- Bouton Wishlist (Icone) -->
               <button
-                id="toggle-fav-big-btn"
-                @click="emit('toggle-favorite')"
+                id="toggle-fav-btn"
+                @click.stop="emit('toggle-favorite')"
                 :class="[
-                  'p-3.5 rounded-xl border flex items-center justify-center transition-all active:scale-95',
+                  'p-2.5 rounded-xl border flex items-center justify-center transition-all duration-200 active:scale-95',
                   isFavorite
-                    ? 'border-pink-200 bg-pink-50 text-pink-600'
-                    : 'border-slate-200 text-slate-400 hover:text-rose-500 hover:bg-slate-50'
+                    ? 'border-pink-200 bg-pink-50 text-pink-600 shadow-xs'
+                    : 'border-slate-100 text-slate-400 hover:text-rose-500 hover:bg-slate-50'
                 ]"
                 title="Ajouter aux favoris"
               >
