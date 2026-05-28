@@ -27,10 +27,9 @@ watch(() => props.product.id, () => {
 
 <template>
   <div class="h-full">
-    <!-- Conteneur principal de la carte -->
     <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-xs hover:shadow-md hover:border-indigo-100 transition-all duration-300 h-full flex flex-col group cursor-pointer">
       
-      <!-- Section Image (Haut) -->
+      
       <div class="relative mb-4">
           <div class="aspect-square bg-slate-50 rounded-xl overflow-hidden border border-slate-100 relative">
             <img
@@ -52,7 +51,7 @@ watch(() => props.product.id, () => {
           </div>
       </div>
 
-      <!-- Section Contenu (Milieu) -->
+      
       <div class="flex flex-col flex-1 space-y-4">
           <div class="space-y-1">
             <span class="text-xs font-sans font-bold text-indigo-600 tracking-wider uppercase">
@@ -99,7 +98,7 @@ watch(() => props.product.id, () => {
             </div>
           </div>
 
-          <!-- Section Prix et Actions (Bas) -->
+          
           <div class="pt-3 mt-auto flex items-center justify-between border-t border-slate-50">
            
             <div class="flex flex-col">
@@ -111,7 +110,7 @@ watch(() => props.product.id, () => {
 
             <div class="flex gap-2">
               
-              <!-- Bouton Ajouter au Panier (Icone) -->
+              
               <button
                 id="add-to-cart-btn"
                 :disabled="product.stock === 0"
@@ -127,7 +126,7 @@ watch(() => props.product.id, () => {
                 <ShoppingCart class="w-5 h-5" />
               </button>
 
-              <!-- Bouton Wishlist (Icone) -->
+              
               <button
                 id="toggle-fav-btn"
                 @click.stop="emit('toggle-favorite')"
