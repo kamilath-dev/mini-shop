@@ -26,16 +26,13 @@ watch(() => props.product.id, () => {
 </script>
 
 <template>
-  <div class="space-y-6">
-
-    
-    <div class="bg-white rounded-2xl border border-slate-100 p-6 md:p-8 shadow-xs">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-        
-     
-        <div class="space-y-4">
-          <!-- Image active principale -->
-          <div class="aspect-square bg-slate-50 rounded-2xl overflow-hidden border border-slate-100 relative">
+  <div class="h-full">
+    <!-- Conteneur principal de la carte -->
+    <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-xs hover:shadow-md hover:border-indigo-100 transition-all duration-300 h-full flex flex-col group cursor-pointer">
+      
+      <!-- Section Image (Haut) -->
+      <div class="relative mb-4">
+          <div class="aspect-square bg-slate-50 rounded-xl overflow-hidden border border-slate-100 relative">
             <img
               :src="product.mainImage"
               :alt="product.name"
@@ -53,27 +50,27 @@ watch(() => props.product.id, () => {
               </span>
             </div>
           </div>
-        </div>
+      </div>
 
-        
-        <div class="flex flex-col space-y-6">
-          <div class="space-y-2">
+      <!-- Section Contenu (Milieu) -->
+      <div class="flex flex-col flex-1 space-y-4">
+          <div class="space-y-1">
             <span class="text-xs font-sans font-bold text-indigo-600 tracking-wider uppercase">
               {{ product.category }}
             </span>
-            <h1 class="font-sans font-extrabold text-2xl md:text-3xl text-slate-800 leading-tight">
+            <h1 class="font-sans font-extrabold text-base md:text-lg text-slate-800 leading-tight">
               {{ product.name }}
             </h1>
           </div>
 
-          <div class="space-y-3">
-            <p class="text-sm text-slate-600 leading-relaxed font-sans">
+          <div>
+            <p class="text-xs text-slate-600 leading-relaxed font-sans line-clamp-2">
               {{ product.shortDescription }}
             </p>
           </div>
 
-          <div class="p-4 bg-slate-50/70 border border-slate-100 rounded-xl space-y-3">
-            <div class="flex justify-between items-center text-xs">
+          <div class="p-3 bg-slate-50/70 border border-slate-100 rounded-xl space-y-2">
+            <div class="flex justify-between items-center text-[10px]">
               <span class="text-slate-500 font-sans font-medium">Disponibilité :</span>
               <span 
                 :class="[
@@ -106,7 +103,7 @@ watch(() => props.product.id, () => {
            
             <div class="sm:text-left text-center shrink-0">
               <span class="text-[10px] text-slate-400 font-sans block">Prix</span>
-              <span class="font-mono font-black text-2xl md:text-3xl text-slate-800">
+              <span class="font-mono font-black text-xl md:text-2xl text-slate-800">
                 {{ product.price.toFixed(2) }} FCFA
               </span>
             </div>
@@ -118,14 +115,14 @@ watch(() => props.product.id, () => {
                 :disabled="product.stock === 0"
                 @click="emit('add-to-cart')"
                 :class="[
-                  'flex-1 py-3.5 px-6 rounded-xl font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-2.5 shadow-sm transition-all duration-200',
+                  'flex-1 py-2.5 px-4 rounded-xl font-sans font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-all duration-200',
                   product.stock === 0
                     ? 'bg-slate-150 border border-slate-200 text-slate-400 cursor-not-allowed'
                     : 'bg-indigo-600 hover:bg-indigo-700 text-white hover:shadow-indigo-100 active:scale-98'
                 ]"
               >
-                <ShoppingCart class="w-4.5 h-4.5" />
-                <span>{{ product.stock === 0 ? 'Indisponible' : 'Ajouter au Panier' }}</span>
+                <ShoppingCart class="w-4 h-4" />
+                <span>{{ product.stock === 0 ? 'Rupture' : 'Ajouter' }}</span>
               </button>
 
               <button
@@ -148,5 +145,4 @@ watch(() => props.product.id, () => {
 
       </div>
     </div>
-  </div>
 </template>

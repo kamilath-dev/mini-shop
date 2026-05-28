@@ -132,7 +132,7 @@ watch(() => props.product.id, () => {
               </div>
             </div>
           </div>
-
+          
           <div class="pt-2 flex flex-col sm:flex-row gap-4 items-center">
             
             <div class="sm:text-left text-center shrink-0">

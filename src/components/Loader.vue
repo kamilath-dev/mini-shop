@@ -8,7 +8,7 @@ defineProps<{
 <template>
 
   <!-- section pour l'affichage de la grille  -->
-  <div v-if="type === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div v-if="type === 'grid'" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     <div 
       v-for="i in 8" 
       :key="i" 
