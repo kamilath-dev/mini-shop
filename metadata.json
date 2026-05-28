@@ -1,0 +1,6 @@
+{
+  "name": "Mini Boutique E-Commerce Kamie Shop",
+  "description": "Une mini plateforme e-commerce construite en Vue JS avec Tailwind CSS, simulant un catalogue, un panier, des favoris et un checkout, conçue avec amour .",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
