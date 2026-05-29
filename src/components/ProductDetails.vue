@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
-import { ChevronLeft, Heart, ShoppingCart, Star, Shield, Truck, RotateCcw } from 'lucide-vue-next';
+import { ChevronLeft, Heart, ShoppingCart, Shield, Truck, RotateCcw } from 'lucide-vue-next';
 import type { Product } from '../types';
 
 // Nous définissons les propriétés

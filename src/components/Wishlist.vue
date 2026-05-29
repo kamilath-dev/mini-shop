@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Heart, Trash2, ShoppingCart, Star } from 'lucide-vue-next';
+import { Heart, Trash2, ShoppingCart } from 'lucide-vue-next';
 import type { Product } from '../types';
 
 defineProps<{
