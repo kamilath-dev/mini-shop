@@ -7,15 +7,13 @@ const props = defineProps<{
   cartCount: number;
   wishlistCount: number;
   activeTab: 'catalog' | 'wishlist';
-  modelValue: string; // Utilisé pour le v-model de la recherche !
-  sortBy: string; // Utilisé pour le tri des produits !
+  modelValue: string; // Utilisé pour le v-model de la recherche
 }>();
 
 // On déclare les événements que ce composant peut envoyer à son parent (App.vue)
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
   (e: 'update:activeTab', value: 'catalog' | 'wishlist'): void;
-  (e: 'update:sortBy', value: string): void;
   (e: 'open-cart'): void;
   (e: 'clear-details'): void;
 }>();
@@ -51,7 +49,7 @@ const selectTab = (tab: 'catalog' | 'wishlist') => {
           </span>
         </div>
 
-        <!-- Recherche par mot-clé et Option de tri avec le v-model de Vue -->
+        <!-- Recherche par mot-clé avec le v-model de Vue -->
         <div class="flex-1 max-w-lg flex items-center gap-2">
           <div class="flex-grow max-w-md relative">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
@@ -71,23 +69,8 @@ const selectTab = (tab: 'catalog' | 'wishlist') => {
             >
               Effacer
             </button>
-          </div>
-
-          <!-- Tri des produits (prix croissant / décroissant) -->
-          <div class="shrink-0">
-            <select
-              id="sort-select"
-              :value="sortBy"
-              @change="emit('update:sortBy', ($event.target as HTMLSelectElement).value)"
-              class="bg-slate-50 border border-slate-200 text-slate-755 hover:border-slate-305 hover:bg-slate-100 rounded-xl px-2 sm:px-3 py-2 text-xs sm:text-sm focus:outline-hidden focus:border-indigo-500 font-sans font-medium cursor-pointer transition-all"
-            >
-              <option value="price-asc">Prix croissant</option>
-              <option value="price-desc">Prix décroissant</option>
-            </select>
-          </div>
+          </div>        
         </div>
-
-        
         <div class="flex items-center gap-3">
           
           

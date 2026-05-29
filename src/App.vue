@@ -171,7 +171,6 @@ const navigateToHome = () => {
     <!-- Header -->
     <Header
       v-model="searchTerm"
-      v-model:sort-by="sortBy"
       :cart-count="totalCartCount"
       :wishlist-count="favorites.length"
       v-model:active-tab="activeTab"
@@ -221,20 +220,37 @@ const navigateToHome = () => {
 
             <div v-else class="space-y-6">
               
-              <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-                <button
-                  v-for="cat in categories"
-                  :key="cat"
-                  @click="selectedCategory = cat"
-                  :class="[
-                    'px-4 py-2 rounded-xl text-xs sm:text-sm font-sans font-medium transition-all shrink-0',
-                    selectedCategory === cat
-                      ? 'bg-slate-900 text-white shadow-xs'
-                      : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-100 hover:border-slate-250/50'
-                  ]"
-                >
-                  {{ cat }}
-                </button>
+              <!-- Section de filtrage par catégorie et de tri -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <!-- Catégories -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 scrollbar-none">
+                  <button
+                    v-for="cat in categories"
+                    :key="cat"
+                    @click="selectedCategory = cat"
+                    :class="[
+                      'px-4 py-2 rounded-xl text-xs sm:text-sm font-sans font-medium transition-all shrink-0',
+                      selectedCategory === cat
+                        ? 'bg-slate-900 text-white shadow-xs'
+                        : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-100 hover:border-slate-250/50'
+                    ]"
+                  >
+                    {{ cat }}
+                  </button>
+                </div>
+
+                <!-- Menu de tri -->
+                <div class="shrink-0">
+                  <select
+                    id="sort-select"
+                    v-model="sortBy"
+                    class="w-full sm:w-auto bg-white border border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 rounded-xl px-3 py-2 text-xs sm:text-sm focus:outline-none focus:border-indigo-500 font-sans font-medium cursor-pointer transition-all shadow-sm"
+                  >
+                    <option value="default">Trier par (Défaut)</option>
+                    <option value="price-asc">Prix croissant</option>
+                    <option value="price-desc">Prix décroissant</option>
+                  </select>
+                </div>
               </div>
 
               <div>
